@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -o pipefail
+
 #########################################
 ##  
 ##  SOURCE: Inspired by Yago Iglesias Vazquez
@@ -30,12 +32,12 @@ blue() {
 }
 
 judge_one() {
-    cd "$1" || exit
+    cd "$1" || return 1
     blue "Judging $1"
     if ! judge "$PWD"; then
         return 1
     fi
-    cd - || exit
+    cd - || return 1
 }
 
 judge() {
@@ -80,6 +82,12 @@ judge() {
     fi 
 
     rm -rf $TMP
+
+    if [ $failed -eq 0 ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 judge_all() {
@@ -92,27 +100,22 @@ judge_all() {
             fi
         fi
     done
-    return $global_failed
+    if [ $global_failed -ne 0 ]; then
+        return 1
+    fi
 }
 
 if [ $# -eq 0 ] || [[ "$1" == "all" ]]; then
-    if ! judge_all; then
-        exit 1
-    fi
+    judge_all || exit 1
 else
     if ! [ -d "$1" ] && ! [ -d *-$1 ] && ! [ -d PL$1* ]; then
         red "$1 is not a directory"
         exit 1
     fi
-    pattern="$1|[A-Za-z0-9]*-$1|PL$1[A-Za-z0-9-]*"
-    local any_failed=0
-    ls | grep -E ${pattern} | while read -r file; do
+    while IFS= read -r file; do
         if ! judge_one "$file"; then
-            any_failed=1
+            exit 1
         fi
-    done
-    if [ $any_failed -eq 1 ]; then
-        exit 1
-    fi
+    done < <(ls | grep -E ${pattern})
 fi
 

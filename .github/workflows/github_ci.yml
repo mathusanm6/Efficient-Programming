@@ -35,7 +35,7 @@ jobs:
       
     - name: Custom Test with ./judge.sh
       run: |
+        set -eo pipefail
         chmod +x ./judge.sh
         ./judge.sh all
-        echo "Exit status: $?"
       shell: bash
