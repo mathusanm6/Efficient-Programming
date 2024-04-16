@@ -1,3 +1,5 @@
+[![Pythonic CI](https://github.com/mathusanm6/Efficient-Programming/actions/workflows/github_ci.yml/badge.svg)](https://github.com/mathusanm6/Efficient-Programming/actions/workflows/github_ci.yml)
+
 # Efficient-Programming
 A collection of concrete problems requiring an efficient algorithm. The proposed solutions are in Python to ease prototyping.
 
