@@ -1,15 +1,16 @@
 #### Credits
+
 From the Effective Programming course taught at Université Paris Cité by Dominique Poulalhon and François Laroussinie.
 
 ## Azulejos
 
 Two Portuguese ceramists team up to open an azulejos shop. They have a small shop window where they want to display some of their work in the most attractive and fair way possible: each will display the same number of azulejos. To make the most of the space available, they want to display two rows of tiles, one for each of the two artists, ensuring that all are clearly visible, including those in the back row. Each azulejo in the back row must be higher than the one in front of it. Another important point is to arrange the order of price: a customer attracted by one work will be able to admire others that they can also afford, only to give in to temptation and push open the shop door.
 
-#### Objective 
+#### Objective
 
 To find a compatible layout, or determine that none exists.
 
-#### Input 
+#### Input
 
 The examples are supplied in files consisting of 5 lines in the following format:
 
@@ -25,11 +26,12 @@ Parameter bounds: $1$ ≤ `n` ≤ $5\times10^5$, `pij` ≤ $10^9$, `hij` ≤ $10
 
 #### Output
 
-If a valid layout exists, the output file must describe one, in the form of 2 lines of `n` integers, each describing a permutation of the `n` tile numbers in a row: on the first line, the back row; on the second, the front row. 
+If a valid layout exists, the output file must describe one, in the form of 2 lines of `n` integers, each describing a permutation of the `n` tile numbers in a row: on the first line, the back row; on the second, the front row.
 
 If none exist, the output file must contain the word `impossible`.
 
 #### Example
+
 For the following input file:
 
 ```bash
