@@ -37,4 +37,5 @@ jobs:
       run: |
         chmod +x ./judge.sh
         ./judge.sh all
+        echo "Exit status: $?"
       shell: bash
