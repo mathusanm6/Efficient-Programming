@@ -108,5 +108,6 @@ if not to_break:
         result_bg[i] += 1
         result_fg[i] += 1
 
+    print_result_xg(result_bg)
     print_result_xg(result_fg)
     
