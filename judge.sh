@@ -107,15 +107,16 @@ judge_all() {
 
 if [ $# -eq 0 ] || [[ "$1" == "all" ]]; then
     judge_all || exit 1
-else
-    if ! [ -d "$1" ] && ! [ -d *-$1 ] && ! [ -d PL$1* ]; then
-        red "$1 is not a directory"
-        exit 1
-    fi
-    while IFS= read -r file; do
-        if ! judge_one "$file"; then
-            exit 1
-        fi
-    done < <(ls | grep -E ${pattern})
 fi
 
+if [ -d "$1" ] || [ -d *-$1 ] || [ -d PL$1* ]; then
+    pattern="$1|[A-Za-z0-9]*-$1|PL$1[A-Za-z0-9-]*"
+    for file in "$(ls | grep -E ${pattern})"; do
+        if ! judge_one $file; then
+            exit 1
+        fi
+    done
+else
+    red "$1 is not a directory"
+    exit 1
+fi
