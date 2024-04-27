@@ -42,61 +42,86 @@ def fill_heap():
             idx_fg += 1
 
 
+def heap_fully_traversed():  # Returns True if one of the heaps is empty and the corresponding list is exhausted
+    if len(heap_bg) == 0 or len(heap_fg) == 0:
+        if idx_bg >= len(bg) and idx_fg >= len(fg):
+            return True
+    return False
+
+
+def process_heap_bg():
+    to_break = False
+    while len(heap_bg) > 0 and len(heap_fg) > 0:
+        element_heap_bg = heap_bg.peek()
+        element_heap_fg = heap_fg.pop_max_below(element_heap_bg[0])
+
+        if element_heap_fg is None:
+            break
+
+        element_heap_bg = heap_bg.pop()
+
+        if element_heap_bg[0] <= element_heap_fg[0]:
+            print("impossible")
+            to_break = True
+            break
+
+        result_bg.append(element_heap_bg[1][2])
+        result_fg.append(element_heap_fg[1][2])
+
+    return to_break
+
+
+def process_heap_fg():
+    to_break = False
+    while len(heap_bg) > 0 and len(heap_fg) > 0:
+        element_heap_fg = heap_fg.peek()
+        element_heap_bg = heap_bg.pop_min_above(element_heap_fg[0])
+
+        if element_heap_bg is None:
+            break
+
+        element_heap_fg = heap_fg.pop()
+
+        if element_heap_bg[0] <= element_heap_fg[0]:
+            print("impossible")
+            to_break = True
+            break
+
+        result_bg.append(element_heap_bg[1][2])
+        result_fg.append(element_heap_fg[1][2])
+
+    return to_break
+
+
+def process_heap_both():
+    to_break = False
+    while len(heap_bg) > 0 and len(heap_fg) > 0:
+        element_heap_bg = heap_bg.pop()
+        element_heap_fg = heap_fg.pop()
+
+        if element_heap_bg[0] <= element_heap_fg[0]:
+            print("impossible")
+            to_break = True
+            break
+
+        result_bg.append(element_heap_bg[1][2])
+        result_fg.append(element_heap_fg[1][2])
+
+    return to_break
+
+
 while not to_break:
     fill_heap()  # Ensure both heaps are checked and filled at the start of the loop
 
-    if len(heap_bg) == 0 or len(heap_fg) == 0:
-        if idx_bg >= len(bg) and idx_fg >= len(fg):
-            break
+    if heap_fully_traversed():
+        break
 
     if len(heap_bg) < len(heap_fg):
-
-        while len(heap_bg) > 0 and len(heap_fg) > 0:
-            element_heap_bg = heap_bg.peek()
-            element_heap_fg = heap_fg.pop_max_below(element_heap_bg[0])
-
-            if element_heap_fg is None:
-                break
-
-            element_heap_bg = heap_bg.pop()
-
-            if element_heap_bg[0] <= element_heap_fg[0]:
-                print("impossible")
-                to_break = True
-                break
-
-            result_bg.append(element_heap_bg[1][2])
-            result_fg.append(element_heap_fg[1][2])
-
+        to_break = process_heap_bg()
     elif len(heap_bg) > len(heap_fg):
-        while len(heap_bg) > 0 and len(heap_fg) > 0:
-            element_heap_fg = heap_fg.peek()
-            element_heap_bg = heap_bg.pop_min_above(element_heap_fg[0])
-
-            if element_heap_bg is None:
-                break
-
-            element_heap_fg = heap_fg.pop()
-
-            if element_heap_bg[0] <= element_heap_fg[0]:
-                print("impossible")
-                to_break = True
-                break
-
-            result_bg.append(element_heap_bg[1][2])
-            result_fg.append(element_heap_fg[1][2])
+        to_break = process_heap_fg()
     else:
-        while len(heap_bg) > 0 and len(heap_fg) > 0:
-            element_heap_bg = heap_bg.pop()
-            element_heap_fg = heap_fg.pop()
-
-            if element_heap_bg[0] <= element_heap_fg[0]:
-                print("impossible")
-                to_break = True
-                break
-
-            result_bg.append(element_heap_bg[1][2])
-            result_fg.append(element_heap_fg[1][2])
+        to_break = process_heap_both()
 
 
 def print_result_xg(result_xg):
