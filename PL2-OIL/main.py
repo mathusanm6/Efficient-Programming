@@ -50,8 +50,8 @@ if len(horizontal_lines) == 1:
     print(horizontal_lines[0].x_length())
     exit()
 
-if all(horizontal_lines[0].A.y == l.A.y for l in horizontal_lines):
-    print(max(l.x_length() for l in horizontal_lines))
+if all(horizontal_lines[0].A.y == hline.A.y for hline in horizontal_lines):
+    print(max(hline.x_length() for hline in horizontal_lines))
     exit()
 
 edge_map = {}
