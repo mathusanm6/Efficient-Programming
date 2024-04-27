@@ -64,7 +64,8 @@ class EdgeSlopeLine:
 
     def __str__(self):
         entry_str = "Entry" if self.is_entry_point else "Exit"
-        return f"{entry_str} : {self.edge.point} -> {self.point} with slope {self.slope}, edge line : {self.edge.line}, horizontal line: {self.horizontal_line}"
+        return f"{entry_str} : {self.edge.point} -> {self.point} with slope {self.slope}, \
+        edge line : {self.edge.line}, horizontal line: {self.horizontal_line}"
 
     def __eq__(self, value: object) -> bool:
         return self.edge == value.edge and self.edge.line == value.edge.line

@@ -1,7 +1,5 @@
-from fractions import Fraction
 from geometry import Point, Edge, Line, EdgeSlopeLine
 import matplotlib.pyplot as plt
-import numpy as np
 
 n = int(input())
 edges = []
