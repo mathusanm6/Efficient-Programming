@@ -98,10 +98,12 @@ while not to_break:
             result_bg.append(element_heap_bg[1][2])
             result_fg.append(element_heap_fg[1][2])
 
+
 def print_result_xg(result_xg):
     for i in range(n - 1):
         print(result_xg[i], end=" ")
     print(result_xg[n - 1])
+
 
 if not to_break:
     for i in range(n):
@@ -110,4 +112,3 @@ if not to_break:
 
     print_result_xg(result_bg)
     print_result_xg(result_fg)
-    
