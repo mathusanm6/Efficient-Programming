@@ -1,6 +1,6 @@
 name: Pythonic CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build-linux:
@@ -34,8 +34,10 @@ jobs:
       run: |
         conda install -y pytest
         pytest
-      
+    
+    # Runs only on main branch
     - name: Custom Test with ./judge.sh
+      if : github.ref == 'refs/heads/main'
       run: |
         set -eo pipefail
         chmod +x ./judge.sh
