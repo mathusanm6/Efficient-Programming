@@ -21,6 +21,7 @@ Determine the maximum quantity of oil that can be extracted by drilling a single
 #### Input
 
 Instances are provided in files with the following format:
+
 ```bash
 n           # number of oil fields
 x01 x11 y1  # coordinates of the first oil field: from (x01, y1) to (x11, y1)
@@ -39,6 +40,7 @@ The output file consists of a single line containing the maximum extraction capa
 #### Examples
 
 For the following input file:
+
 ```bash
 5
 100 180 20
@@ -47,19 +49,24 @@ For the following input file:
 10 40 50
 0 80 70
 ```
+
 the expected output is
+
 ```bash
 200
 ```
 
 while for the input file
+
 ```bash
 3
 50 60 10
 -42 -42 20
 25 0 10
 ```
+
 the expected output is
+
 ```bash
 25
 ```
