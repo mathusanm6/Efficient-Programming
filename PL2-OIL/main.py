@@ -93,6 +93,7 @@ for fe in edge_map:
             esl.set_entry_point(False)
     edge_map[fe].sort(key=lambda esl: (esl.slope, not esl.is_entry_point))
 
+
 def draw():
     # Creating a color map
     cmap = plt.get_cmap("Blues")
