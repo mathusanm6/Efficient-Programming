@@ -34,9 +34,22 @@ blue() {
 judge_one() {
     cd "$1" || return 1
     blue "Judging $1"
+    tp_start=$(date +%s)
     if ! judge "$PWD"; then
         return 1
     fi
+    tp_end=$(date +%s)
+
+    elapsed_seconds=$(($tp_end - $tp_start))
+    elapsed_minutes=$(($elapsed_seconds / 60))
+    remaining_seconds=$(($elapsed_seconds % 60))
+
+    if [ $elapsed_minutes -eq 0 ]; then
+        yellow "Elapsed time: $remaining_seconds second(s)"
+    else
+        yellow "Elapsed time: $elapsed_minutes minutes and $remaining_seconds second(s)"
+    fi
+
     cd - || return 1
 }
 
@@ -64,13 +77,29 @@ judge() {
             red "No answer file for test $base"
             continue
         fi
-
+        
+        start=$(date +%s)
         python3 main.py < "$file" > "$TMP/$base.$OUTPUT_EXT"
+        end=$(date +%s)
+
+        elapsed_seconds=$(($end - $start))
+        elapsed_minutes=$(($elapsed_seconds / 60))
+        remaining_seconds=$(($elapsed_seconds % 60))
+
         if diff $TMP/$base.$OUTPUT_EXT "$dir/$TESTS_FOLDER/$base.$ANSWER_EXT" > /dev/null; then
-            green "Test $base passed"
+            if [ $elapsed_minutes -eq 0 ]; then
+                green "Test $base passed | $remaining_seconds second(s)"
+            else
+                green "Test $base passed | $elapsed_minutes minute(s) and $remaining_seconds second(s)"
+            fi
             passed=$((passed+1))
         else
-            red "Test $base failed"
+            if [ $elapsed_minutes -eq 0 ]; then
+                red "Test $base failed   | $remaining_seconds second(s)"
+            else
+                red "Test $base failed   | $elapsed_minutes minute(s) and $remaining_seconds second(s)"
+            fi
+
             failed=$((failed+1))
         fi
     done
