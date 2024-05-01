@@ -1,3 +1,10 @@
+#########################################
+##
+##  SOLUTION FOR OIL WELLS PROBLEM
+##  BY: MATHUSAN SELVAKUMAR
+##
+#########################################
+
 from fractions import Fraction
 
 
