@@ -9,6 +9,7 @@ A collection of concrete problems requiring an efficient algorithm. The proposed
 - [PL1 - Azulejos](#pl1-azulejos)
 - [PL2 - Oil wells](#pl2-oil-wells)
 - [PL3 - Teams](#pl3-teams)
+- [PL4 - Strings](#pl4-strings)
 
 ## Rapid Problem Statements
 
@@ -36,3 +37,9 @@ To ensure the rules are followed, all messages pass through the referee. To ensu
 The cost of a transmission is the sum of the weights of the arcs through which the message travels.
 
 [Full Problem Statement](PL3-TEAMS/problem.md)
+
+### PL4-STRINGS
+
+We are given `n` strings `s1`, `s2`, ... `sn` over an alphabet `Σ`. Find *the shortest string over `Σ` that contains all the `si`* (and its length).
+
+[Full Problem Statement](PL4-STRINGS/problem.md)
