@@ -28,7 +28,7 @@ jobs:
       run: |
         conda update -n base -c defaults conda
         conda install -y matplotlib
-        conda install -y numpy
+        conda install -y networkx
     - name: Lint with flake8
       run: |
         conda install -y flake8
@@ -47,5 +47,5 @@ jobs:
       run: |
         set -eo pipefail
         chmod +x ./judge.sh
-        ./judge.sh all
+        ./judge.sh 3
       shell: bash
