@@ -20,8 +20,8 @@ def maxOverlap(s1, s2):
 
 def buildDiGraph(strings):
     """
-    - Builds a directed graph. 
-    - Nodes represents one word of the given list. 
+    - Builds a directed graph.
+    - Nodes represents one word of the given list.
     - Two nodes are connected by an edge with their negative overlap length as weight. If there is no overlap,
     the weight is 0.
     """
