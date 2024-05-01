@@ -47,5 +47,5 @@ jobs:
       run: |
         set -eo pipefail
         chmod +x ./judge.sh
-        ./judge.sh 3
+        ./judge.sh all
       shell: bash
