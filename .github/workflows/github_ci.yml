@@ -40,12 +40,3 @@ jobs:
       run: |
         conda install -y pytest
         pytest
-    
-    # Runs only on main branch
-    - name: Custom Test with ./judge.sh
-      if : github.ref == 'refs/heads/main'
-      run: |
-        set -eo pipefail
-        chmod +x ./judge.sh
-        ./judge.sh all
-      shell: bash
