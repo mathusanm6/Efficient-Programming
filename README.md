@@ -40,6 +40,6 @@ The cost of a transmission is the sum of the weights of the arcs through which t
 
 ### PL4-STRINGS
 
-We are given `n` strings `s1`, `s2`, ... `sn` over an alphabet `Σ`. Find *the shortest string over `Σ` that contains all the `si`* (and its length).
+We are given `n` strings `s1`, `s2`, ... `sn` over an alphabet `Σ`. Find _the shortest string over `Σ` that contains all the `si`_ (and its length).
 
 [Full Problem Statement](PL4-STRINGS/problem.md)
