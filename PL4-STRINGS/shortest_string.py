@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import time
 
 
 def maxOverlap(s1, s2):
@@ -79,25 +80,40 @@ def shortestSuperstring(G, strings):
 
     return superstring
 
+YELLOW = '\033[93m'
+RED = '\033[91m'
 
-strings = ["ab", "c", "d"]
-G = buildDiGraph(strings)
-print(shortestSuperstring(G, strings))  # abcd
-# showDiGraph(strings)
+print(f"{RED}Note: {YELLOW}The Greedy TSP algorithm is used to find the shortest superstring.")
+print(f"{YELLOW}The algorithm is an approximative solution with a 1.5 factor.\n")
 
-strings = ["ad", "da", "ab"]
-G = buildDiGraph(strings)
-print(shortestSuperstring(G, strings))  # adab
-# showDiGraph(strings)
+def show_results(strings, expected, obtained, duration):
+    # Define ANSI escape codes for colors
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    ENDC = '\033[0m'
+    UNDERLINE = '\033[4m'
 
-strings = ["add", "dda", "a"]
-G = buildDiGraph(strings)
-print(shortestSuperstring(G, strings))  # adda
-# showDiGraph(strings)
+    print(f"{HEADER}{strings}{ENDC}")
+    print(f"{YELLOW}Expected: {expected}{ENDC}")
+    print(f"{OKGREEN}Obtained: {obtained}{ENDC}")
+    print(f"{OKBLUE}Processing Time: {duration:.6f} seconds{ENDC}")
+    print(f"{UNDERLINE}{ENDC}\n")
 
-strings = ["abcd", "dc", "da", "bc", "bcd", "cdabc"]
-G = buildDiGraph(strings)
-print(
-    shortestSuperstring(G, strings)
-)  # cdabcdc (abcdabcdcda because of 1.5 approximation)
-# showDiGraph(strings)
+strings_list = [
+    (["ab", "c", "d"], "abcd"),
+    (["ad", "da", "ab"], "adab"),
+    (["add", "dda", "a"], "adda"),
+    (["abcd", "dc", "da", "bc", "bcd", "cdabc"], "cdabcdc")
+]
+
+for strings, expected in strings_list:
+    start_time = time.time()
+    G = buildDiGraph(strings)
+    obtained = shortestSuperstring(G, strings)
+    end_time = time.time()
+    duration = end_time - start_time
+    show_results(strings, expected, obtained, duration)
+    # Optionally display the directed graph
+    # showDiGraph(strings)
+
