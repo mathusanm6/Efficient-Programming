@@ -19,12 +19,20 @@ Two Portuguese ceramists team up to open an azulejos shop. They have a small sho
 
 [Full Problem Statement](PL1-AZULEJOS/problem.md)
 
+<div align="center">
+  <img src="PL1-AZULEJOS/PL1.png" alt="Azulejos"/>
+</div>
+
 ### PL2-Oil-Wells
 
 You work for an oil company and are responsible for optimising drilling. After decades of exploitation, drilling is becoming increasingly difficult: **newly discovered deposits are often fragmented**, which affects well productivity. You are being asked to consider the case of _stratified_ deposits, i.e. deposits made up of several sub-deposits at different depths. You need to **determine how to drill a single well to maximise its production**. Drilling must be done in **a single straight line**, and it is assumed that the oil from each field crossed by the well be extracted (even if the intersection is at the end of the field). The capacity of each reservoir is equated
 to its width.
 
 [Full Problem Statement](PL2-OIL/problem.md)
+
+<div align="center">
+  <img src="PL2-OIL/PL2.png" alt="Oil Wells"/>
+</div>
 
 ### PL3-Teams
 
@@ -38,8 +46,16 @@ The cost of a transmission is the sum of the weights of the arcs through which t
 
 [Full Problem Statement](PL3-TEAMS/problem.md)
 
+<div align="center">
+  <img src="PL3-TEAMS/PL3.png" alt="Teams"/>
+</div>
+
 ### PL4-STRINGS
 
 We are given `n` strings `s1`, `s2`, ... `sn` over an alphabet `Σ`. Find _the shortest string over `Σ` that contains all the `si`_ (and its length).
 
 [Full Problem Statement](PL4-STRINGS/problem.md)
+
+<div align="center">
+  <img src="PL4-STRINGS/PL4.png" alt="Strings"/>
+</div>
