@@ -59,7 +59,9 @@ for e in range(2, p + 1):
     for j in range(e + 1, (m + 1) - e + 2):
         min_val = float("inf")
         for k in range(e, j):
-            val = row[k] + (j - k - 1) * (prefix_sum_dist_player[j] - prefix_sum_dist_player[k])
+            val = row[k] + (j - k - 1) * (
+                prefix_sum_dist_player[j] - prefix_sum_dist_player[k]
+            )
             min_val = min(min_val, val)
         row_e[j] = min_val
     row = row_e
